@@ -1,5 +1,7 @@
-import 'package:e_commerce_project/presentation/ui/utility/assets_path.dart';
+import 'package:e_commerce_project/presentation/ui/screens/email_verification_page.dart';
+import 'package:e_commerce_project/presentation/ui/widgets/app_logo.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -10,15 +12,34 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState()
+  {
+    super.initState();
+    moveToNextScreen();
+  }
+
+  void moveToNextScreen()async
+  {
+    await Future.delayed(const Duration(seconds: 2),);
+    Get.offAll(const EmailVerificationPage());
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return  const Scaffold(
       body: Center(
         child: Column(
           children: [
-            const Spacer(),
-            Image.asset(AssetPath.logo, width:  120,),
-            const Spacer(),
+            Spacer(),
+            AppLogo(),
+            Spacer(),
+            CircularProgressIndicator(),
+            SizedBox(height: 8,),
+            Text('Rudra'),
+            SizedBox(height: 8,)
           ],
         ),
       ),
